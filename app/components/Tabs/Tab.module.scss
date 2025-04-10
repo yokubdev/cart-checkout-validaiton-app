@@ -1,0 +1,22 @@
+.list{
+  display: flex;
+  padding: 8px;
+  gap: 8px;
+  border-radius: 8px;
+  background-color: #fff;
+}
+.item{
+  padding: 10px 12px;
+  border-radius: 8px;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+
+  &-active{
+    background-color: #F7F7F7;
+  }
+
+  &:hover:not(&-active) {
+    background-color: #FAFAFA;
+  }
+}

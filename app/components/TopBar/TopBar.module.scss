@@ -1,0 +1,23 @@
+.top_bar_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.top_bar_left {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+.top_bar_right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+

@@ -1,0 +1,17 @@
+.header_bar_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header_bar_left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.header_bar_right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+

@@ -1,0 +1,23 @@
+.spacer {
+  width: 100%;
+
+  &_small {
+    height: 8px;
+    width: 8px;
+  }
+
+  &_medium {
+    height: 16px;
+    width: 16px;
+  }
+
+  &_large {
+    height: 24px;
+    width: 24px;
+  }
+
+  &_xlarge {
+    height: 32px;
+    width: 32px;
+  }
+}

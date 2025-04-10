@@ -1,0 +1,30 @@
+.banner {
+  display: flex;
+  padding: 8px;
+  border-radius: 8px;
+  align-items: center;
+  gap: 8px;
+
+  &_warning {
+    background-color: var(--p-color-bg-warning-subdued, #FFF5EA);
+    border: 1px solid var(--p-color-border-warning, #FFB84C);
+  }
+
+  &_critical {
+    background-color: var(--p-color-bg-critical-subdued, #FFF0F0);
+    border: 1px solid var(--p-color-border-critical, #E32F0B);
+  }
+
+  &_success {
+    background-color: var(--p-color-bg-success-subdued, #F0F9F0);
+    border: 1px solid var(--p-color-border-success, #00A47C);
+  }
+}
+
+.icon_container {
+  flex-shrink: 0;
+}
+
+.content_container {
+  flex: 1;
+}
