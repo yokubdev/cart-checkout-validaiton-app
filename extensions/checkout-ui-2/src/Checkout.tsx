@@ -27,7 +27,7 @@ function Extension() {
     // For checkouts such as draft order invoices, cart attributes may not be allowed
     // Consider rendering a fallback UI or nothing at all, if the feature is unavailable
     return (
-      <Banner title="checkout-ui" status="warning">
+      <Banner title="checkout-ui-2" status="warning">
         {translate("attributeChangesAreNotSupported")}
       </Banner>
     );
@@ -36,7 +36,7 @@ function Extension() {
   // 3. Render a UI
   return (
     <BlockStack border={"dotted"} padding={"tight"}>
-      <Banner title="checkout-ui">
+      <Banner title="checkout-ui-2">
         {translate("welcome", {
           target: <Text emphasis="italic">{extension.target}</Text>,
         })}
