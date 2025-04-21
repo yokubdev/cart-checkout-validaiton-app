@@ -4,9 +4,29 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
+import {
+  QueryClient,
+  QueryClientProvider,
+  HydrationBoundary
+} from "@tanstack/react-query";
+import { useState } from "react";
+
+export const loader = async () => {
+  return { dehydratedState: null };
+};
 
 export default function App() {
+  const { dehydratedState } = useLoaderData<typeof loader>();
+  const [queryClient] = useState(() => new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: true,
+      },
+    },
+  }));
+
   return (
     <html>
       <head>
@@ -21,7 +41,11 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <QueryClientProvider client={queryClient}>
+          <HydrationBoundary state={dehydratedState}>
+            <Outlet />
+          </HydrationBoundary>
+        </QueryClientProvider>
         <ScrollRestoration />
         <Scripts />
       </body>

@@ -1,6 +1,13 @@
 import { useCallback } from 'react';
 import classes from './Tab.module.scss';
 import cx from 'classnames';
+import { Text } from '@shopify/polaris';
+
+interface TabItemProps {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}
 
 interface TabProps {
   id: string;
@@ -78,7 +85,7 @@ const TabItem: React.FC<ItemProps> = ({
       id={`tab-${id}`}
       aria-selected={isActive}
       aria-controls={`tabpanel-${id}`}
-      tabIndex={isActive ? 0 : -1}
+      tabIndex={0}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       className={cx(classes.item, {
@@ -106,6 +113,25 @@ export const TabPanel: React.FC<{
       className={className}
     >
       {children}
+    </div>
+  );
+};
+
+
+export const TabItemContent: React.FC<TabItemProps> = ({
+  icon,
+  title,
+  description,
+}) => {
+  return (
+    <div className={classes.tabItem}>
+      <div className={classes.tabItemIcon}>
+        {icon}
+      </div>
+    <div className={classes.tabItemContent}>
+      <Text variant="headingXs" as="p">{title}</Text>
+        <Text variant="bodyXs" as="p">{description}</Text>
+      </div>
     </div>
   );
 };

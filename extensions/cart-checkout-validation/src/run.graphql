@@ -1,7 +1,30 @@
 query RunInput {
+  shop {
+    metafield(namespace: "limitations", key: "warning_messages") {
+      value
+    }
+    shopLimitations: metafield(namespace: "limitations", key: "shop_limitations") {
+      value
+    }
+  }
   cart {
     lines {
       quantity
+      merchandise {
+        ... on ProductVariant {
+          id
+          sku
+          metafield(namespace: "limitations", key: "variant_limits") {
+            value
+          }
+          product {
+            id
+            metafield(namespace: "limitations", key: "product_limits") {
+              value
+            }
+          }
+        }
+      }
     }
   }
 }

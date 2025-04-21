@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "38309d56441029c4a69506207a01aa10"
-application_url = "https://ourselves-circle-cards-mp.trycloudflare.com"
+application_url = "https://aaa-el-wellington-mozambique.trycloudflare.com"
 embedded = true
 name = "checkout-validation-app"
 handle = "checkout-validation-app-17"
@@ -23,13 +23,13 @@ api_version = "2025-04"
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_products"
+scopes = "write_products,write_product_listings,read_product_listings"
 
 [auth]
 redirect_urls = [
-  "https://ourselves-circle-cards-mp.trycloudflare.com/auth/callback",
-  "https://ourselves-circle-cards-mp.trycloudflare.com/auth/shopify/callback",
-  "https://ourselves-circle-cards-mp.trycloudflare.com/api/auth/callback"
+  "https://aaa-el-wellington-mozambique.trycloudflare.com/auth/callback",
+  "https://aaa-el-wellington-mozambique.trycloudflare.com/auth/shopify/callback",
+  "https://aaa-el-wellington-mozambique.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]

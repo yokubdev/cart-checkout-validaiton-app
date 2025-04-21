@@ -1,3 +1,16 @@
+# Project Overview
+
+This is a Shopify app built with Remix.
+How to run the app:
+
+1. Clone the repository
+2. Run `npm install` to install the dependencies
+3. Run `npx prisma generate` to generate the Prisma client
+4. Run `npx prisma studio` to view the database
+5. Run `npx prisma db push` to push the database changes to the database  
+6. Run `npm run dev` to start the development server
+7. Run `npm run deploy` to deploy the app
+
 # Shopify App Template - Remix
 
 This is a template for building a [Shopify app](https://shopify.dev/docs/apps/getting-started) using the [Remix](https://remix.run) framework.
