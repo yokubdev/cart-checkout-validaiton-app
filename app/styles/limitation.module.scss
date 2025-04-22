@@ -1,0 +1,35 @@
+.panel {
+  padding: 17px;
+  border-radius: 12px;
+  background-color: var(--p-color-bg-surface);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.warning_messages_container {
+  background-color: var(--p-color-bg-surface);
+  border-radius: 12px;
+}
+
+.warning_messages_header {
+  padding: 17px;
+}
+
+.warning_messages_content {
+  padding: 17px;
+}
+
+.variant_row {
+  background-color: rgb(251 247 255);
+}
+
+.table_cell {
+  width: 70px;
+  max-width: 70px;
+}
+
+:global(.Polaris-TextField__Spinner) {
+  display: none;
+}
+

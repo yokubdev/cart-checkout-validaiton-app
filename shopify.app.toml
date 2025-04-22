@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "38309d56441029c4a69506207a01aa10"
-application_url = "https://aaa-el-wellington-mozambique.trycloudflare.com"
+application_url = "https://appraisal-third-gazette-gage.trycloudflare.com"
 embedded = true
 name = "checkout-validation-app"
 handle = "checkout-validation-app-17"
@@ -27,9 +27,9 @@ scopes = "write_products,write_product_listings,read_product_listings"
 
 [auth]
 redirect_urls = [
-  "https://aaa-el-wellington-mozambique.trycloudflare.com/auth/callback",
-  "https://aaa-el-wellington-mozambique.trycloudflare.com/auth/shopify/callback",
-  "https://aaa-el-wellington-mozambique.trycloudflare.com/api/auth/callback"
+  "https://appraisal-third-gazette-gage.trycloudflare.com/auth/callback",
+  "https://appraisal-third-gazette-gage.trycloudflare.com/auth/shopify/callback",
+  "https://appraisal-third-gazette-gage.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]
