@@ -343,6 +343,7 @@ export const ProductLimitations: React.FC<IProps> = ({
                 label=""
                 type="number"
                 value={min}
+                min={0}
                 autoComplete="off"
                 onChange={(value) => {
                   handleSetMin(id, value);
@@ -357,6 +358,7 @@ export const ProductLimitations: React.FC<IProps> = ({
                 type="number"
                 value={max}
                 autoComplete="off"
+                min={0}
                 onChange={(value) => {
                   handleSetMax(id, value);
                 }}

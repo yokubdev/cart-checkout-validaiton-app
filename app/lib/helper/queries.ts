@@ -31,8 +31,12 @@ export const useSaveLimitations = () => {
     mutationFn: api.limitations.save,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['limitations'] });
+      shopify.toast.show("Limitations saved successfully");
       syncMetafields();
     },
+    onError: () => {
+      shopify.toast.show("Failed to save limitations", { isError: true });
+    }
   });
 };
 
@@ -62,8 +66,12 @@ export const useSaveWarningMessages = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['warningMessages'] });
+      shopify.toast.show("Warning messages saved successfully");
       syncMetafields();
     },
+    onError: () => {
+      shopify.toast.show("Failed to save warning messages", { isError: true });
+    }
   });
 };
 
@@ -74,15 +82,23 @@ export const useUpdateVariantLimitations = () => {
     mutationFn: api.limitations.updateVariants,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['limitations'] });
+      shopify.toast.show("Variant limitations updated successfully");
     },
+    onError: () => {
+      shopify.toast.show("Failed to update variant limitations", { isError: true });
+    }
   });
 };
 
 export const useSyncMetafields = () => {
   return useMutation({
     mutationFn: api.metafields.sync,
+    onSuccess: () => {
+      shopify.toast.show("Metafields synced successfully");
+    },
     onError: (error) => {
       console.error('Failed to sync metafields:', error);
+      shopify.toast.show("Failed to sync metafields", { isError: true });
     }
   });
 };
@@ -95,8 +111,12 @@ export const useDeleteLimitations = () => {
     mutationFn: api.limitations.delete,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['limitations'] });
+      shopify.toast.show("Limitations deleted successfully");
       syncMetafields();
     },
+    onError: () => {
+      shopify.toast.show("Failed to delete limitations", { isError: true });
+    }
   });
 };
 
