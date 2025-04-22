@@ -10,8 +10,8 @@ export function run(input: RunInput): FunctionRunResult {
   const shopLimitations = input.shop?.shopLimitations?.value;
 
   let parsedMessages = {
-    min: "You must select at least {{minimum_quantity}} products",
-    max: "You can only select a maximum of {{maximum_quantity}} products"
+    min: "You must select at least {{minimum_quantity}} {{product_title}}",
+    max: "You can only select a maximum of {{maximum_quantity}} {{product_title}}"
   };
 
   try {
@@ -37,6 +37,7 @@ export function run(input: RunInput): FunctionRunResult {
   input.cart.lines.forEach(line => {
     if ('product' in line.merchandise) {
       const variantId = line.merchandise.id;
+      const productTitle = line.merchandise.product.title+` (${line.merchandise.title})`;
       const sku = line.merchandise.sku;
       let limitation = null;
 
@@ -53,14 +54,14 @@ export function run(input: RunInput): FunctionRunResult {
 
         if (quantity < min) {
           errors.push({
-            localizedMessage: parsedMessages.min.replace("{{minimum_quantity}}", min.toString()),
+            localizedMessage: parsedMessages.min.replace("{{minimum_quantity}}", min.toString()).replace("{{product_title}}", productTitle),
             target: "$.cart.lines"
           });
         }
 
         if (quantity > max) {
           errors.push({
-            localizedMessage: parsedMessages.max.replace("{{maximum_quantity}}", max.toString()),
+            localizedMessage: parsedMessages.max.replace("{{maximum_quantity}}", max.toString()).replace("{{product_title}}", productTitle),
             target: "$.cart.lines"
           });
         }

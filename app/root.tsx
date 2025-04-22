@@ -12,6 +12,7 @@ import {
   HydrationBoundary
 } from "@tanstack/react-query";
 import { useState } from "react";
+import { LimitationsProvider } from "./moduls/limitation/context/context";
 
 export const loader = async () => {
   return { dehydratedState: null };
@@ -43,7 +44,9 @@ export default function App() {
       <body>
         <QueryClientProvider client={queryClient}>
           <HydrationBoundary state={dehydratedState}>
-            <Outlet />
+            <LimitationsProvider>
+              <Outlet />
+            </LimitationsProvider>
           </HydrationBoundary>
         </QueryClientProvider>
         <ScrollRestoration />

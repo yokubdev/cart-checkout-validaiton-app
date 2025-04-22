@@ -14,11 +14,13 @@ query RunInput {
         ... on ProductVariant {
           id
           sku
+          title
           metafield(namespace: "limitations", key: "variant_limits") {
             value
           }
           product {
             id
+            title
             metafield(namespace: "limitations", key: "product_limits") {
               value
             }

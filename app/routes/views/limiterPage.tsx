@@ -29,6 +29,7 @@ import {
 import classes from "app/styles/limitation.module.scss";
 import { Type } from "app/moduls/limitation/constants";
 import config from "app/config";
+import { useLimitationsContext } from "app/moduls/limitation/context/context";
 
 interface IProps {
   limitations: Types.IApi.ILimitation[];
@@ -39,8 +40,6 @@ interface IProps {
 }
 
 export const ProductLimitations: React.FC<IProps> = ({
-  limitations,
-  setLimitations,
   setIsAddVariantModalOpen,
 }) => {
   const [sortSelected, setSortSelected] = useState(["order asc"]);
@@ -51,6 +50,7 @@ export const ProductLimitations: React.FC<IProps> = ({
     undefined,
   );
 
+  const {limitations, setLimitations } = useLimitationsContext();
   const [searchParams, setSearchParams] = useSearchParams();
   const limitationsParam = searchParams.get("limitations");
 

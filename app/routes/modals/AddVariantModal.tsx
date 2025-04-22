@@ -9,6 +9,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import type * as LimitationTypes from "app/moduls/limitation/types";
 import { useProducts, useUpdateVariantLimitations } from "app/lib/helper/queries";
 import { Type } from "app/moduls/limitation/constants";
+import { useLimitationsContext } from "app/moduls/limitation/context/context";
 
 interface IProps {
   isAddVariantModalOpen: boolean;
@@ -21,10 +22,10 @@ export const AddVariantModal: React.FC<IProps> = ({
   isAddVariantModalOpen,
   setIsAddVariantModalOpen,
   onLimitationsChange,
-  limitations,
 }) => {
   const { data: products = [] } = useProducts();
   const { mutate: updateVariantLimitations, isPending } = useUpdateVariantLimitations();
+  const {limitations } = useLimitationsContext();
   const [existingLimitations, setExistingLimitations] =
     useState<Array<LimitationTypes.IApi.ILimitation>>(limitations);
 
@@ -159,6 +160,11 @@ export const AddVariantModal: React.FC<IProps> = ({
       existingLimitations.some((item) => item.id === variant.id),
     );
 
+    // Skip rendering if product has only one variant and it's not "Default Title"
+    if (variants.length === 1 && variants[0].title === "Default Title") {
+      return null;
+    }
+
     return (
       <React.Fragment key={product.id}>
         <IndexTable.Row
@@ -179,31 +185,32 @@ export const AddVariantModal: React.FC<IProps> = ({
         </IndexTable.Row>
 
         {variants.map(
-          (variant, variantIndex) =>{
-            return(
+          (variant, variantIndex) => {
+            return (
               variant.title !== "Default Title" && (
                 <IndexTable.Row
-                rowType="child"
-                key={variant.id}
-                id={variant.id}
-                position={index + variantIndex + 1}
-                selected={existingLimitations.some(
-                  (item) => item.itemId === variant.id,
-                )}
-                onClick={() => handleVariantSelection(variant.id, null)}
-              >
-                <IndexTable.Cell>
-                  <div style={{ paddingLeft: "20px" }}>
-                    <Text as="span" variant="bodyMd">
-                      {variant.title}
-                    </Text>
-                  </div>
-                </IndexTable.Cell>
-                <IndexTable.Cell>
-                  <Text as="span">SKU: {variant.sku || "N/A"}</Text>
-                </IndexTable.Cell>
-              </IndexTable.Row>
-            ))
+                  rowType="child"
+                  key={variant.id}
+                  id={variant.id}
+                  position={index + variantIndex + 1}
+                  selected={existingLimitations.some(
+                    (item) => item.itemId === variant.id,
+                  )}
+                  onClick={() => handleVariantSelection(variant.id, null)}
+                >
+                  <IndexTable.Cell>
+                    <div style={{ paddingLeft: "20px" }}>
+                      <Text as="span" variant="bodyMd">
+                        {variant.title}
+                      </Text>
+                    </div>
+                  </IndexTable.Cell>
+                  <IndexTable.Cell>
+                    <Text as="span">SKU: {variant.sku || "N/A"}</Text>
+                  </IndexTable.Cell>
+                </IndexTable.Row>
+              )
+            );
           }
         )}
       </React.Fragment>

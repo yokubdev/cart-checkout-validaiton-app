@@ -73,8 +73,8 @@ const WarningMessages: React.FC<WarningMessagesProps> = ({
     <Banner
       status="critical"
       content={
-        content.replace(`{{${replaceValue}}}`, replaceValue === "minimum_quantity" ? "2" : "20") ||
-        placeholder
+        (content.replace(`{{${replaceValue}}}`, replaceValue === "minimum_quantity" ? "2" : "20") ||
+        placeholder).replace("{{product_title}}", "Skyboard")
       }
     />
   );
